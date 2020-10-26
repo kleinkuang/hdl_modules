@@ -1,0 +1,568 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Mon Oct 26 08:33:43 2020
+# Process ID: 23828
+# Current directory: F:/uart
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12384 F:\uart\uart.xpr
+# Log file: F:/uart/vivado.log
+# Journal file: F:/uart\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project F:/uart/uart.xpr
+update_compile_order -fileset sources_1
+add_files -norecurse F:/uart/src/uart_tx_rx.sv
+update_compile_order -fileset sources_1
+create_ip -name fifo_generator -vendor xilinx.com -library ip -version 13.2 -module_name fifo_uart_tx -dir f:/uart/uart.srcs/sources_1/ip
+set_property -dict [list CONFIG.Component_Name {fifo_uart_tx} CONFIG.Input_Data_Width {8} CONFIG.Input_Depth {16384} CONFIG.Output_Data_Width {8} CONFIG.Output_Depth {16384} CONFIG.Reset_Type {Asynchronous_Reset} CONFIG.Full_Flags_Reset_Value {1} CONFIG.Data_Count_Width {14} CONFIG.Write_Data_Count_Width {14} CONFIG.Read_Data_Count_Width {14} CONFIG.Full_Threshold_Assert_Value {16382} CONFIG.Full_Threshold_Negate_Value {16381} CONFIG.Enable_Safety_Circuit {false}] [get_ips fifo_uart_tx]
+generate_target {instantiation_template} [get_files f:/uart/uart.srcs/sources_1/ip/fifo_uart_tx/fifo_uart_tx.xci]
+generate_target all [get_files  f:/uart/uart.srcs/sources_1/ip/fifo_uart_tx/fifo_uart_tx.xci]
+catch { config_ip_cache -export [get_ips -all fifo_uart_tx] }
+export_ip_user_files -of_objects [get_files f:/uart/uart.srcs/sources_1/ip/fifo_uart_tx/fifo_uart_tx.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] f:/uart/uart.srcs/sources_1/ip/fifo_uart_tx/fifo_uart_tx.xci]
+export_simulation -of_objects [get_files f:/uart/uart.srcs/sources_1/ip/fifo_uart_tx/fifo_uart_tx.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files F:/uart/uart.srcs/sources_1/ip/fifo_tx/fifo_tx.xci] -no_script -reset -force -quiet
+remove_files  -fileset fifo_tx F:/uart/uart.srcs/sources_1/ip/fifo_tx/fifo_tx.xci
+file delete -force F:/uart/uart.srcs/sources_1/ip/fifo_tx
+set_property -dict [list CONFIG.C_PROBE7_WIDTH {1} CONFIG.C_PROBE3_WIDTH {1} CONFIG.C_NUM_OF_PROBES {3}] [get_ips ila_uart]
+generate_target all [get_files  F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci]
+catch { config_ip_cache -export [get_ips -all ila_uart] }
+export_ip_user_files -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -no_script -sync -force -quiet
+reset_run ila_uart_synth_1
+launch_runs -jobs 24 ila_uart_synth_1
+export_simulation -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -jobs 24
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 24
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 24
+wait_on_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+current_hw_device [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {lp_error} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bR [get_hw_probes lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+display_hw_ila_data [ get_hw_ila_data hw_ila_data_1 -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+set_property -dict [list CONFIG.C_PROBE2_WIDTH {8} CONFIG.C_PROBE1_WIDTH {8} CONFIG.C_NUM_OF_PROBES {4}] [get_ips ila_uart]
+generate_target all [get_files  F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci]
+catch { config_ip_cache -export [get_ips -all ila_uart] }
+export_ip_user_files -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -no_script -sync -force -quiet
+reset_run ila_uart_synth_1
+launch_runs -jobs 24 ila_uart_synth_1
+export_simulation -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+add_wave -into {hw_ila_data_1.wcfg} -radix bin { {rx_data} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {lp_error} {rx_data_last} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'hX [get_hw_probes lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix bin { {rx_data} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {rx_valid} {rx_data_last} {lp_error} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+set_property -dict [list CONFIG.C_PROBE3_TYPE {0} CONFIG.C_PROBE2_TYPE {1} CONFIG.C_PROBE1_TYPE {1}] [get_ips ila_uart]
+generate_target all [get_files  F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci]
+catch { config_ip_cache -export [get_ips -all ila_uart] }
+export_ip_user_files -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -no_script -sync -force -quiet
+reset_run ila_uart_synth_1
+launch_runs -jobs 24 ila_uart_synth_1
+export_simulation -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+add_wave -into {hw_ila_data_1.wcfg} -radix bin { {rx_data} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {lp_error} {rx_data_last} }
+add_wave -into {hw_ila_data_1.wcfg} -radix bin { {rx_data} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {rx_valid} {rx_data_last} {lp_error} }
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {rx_data_curr} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"ila_inst"}]]
+set_property -dict [list CONFIG.C_DATA_DEPTH {2048} CONFIG.C_NUM_OF_PROBES {6}] [get_ips ila_uart]
+generate_target all [get_files  F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci]
+catch { config_ip_cache -export [get_ips -all ila_uart] }
+export_ip_user_files -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -no_script -sync -force -quiet
+reset_run ila_uart_synth_1
+launch_runs -jobs 24 ila_uart_synth_1
+export_simulation -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+set_property -dict [list CONFIG.C_PROBE2_TYPE {0} CONFIG.C_PROBE1_TYPE {0} CONFIG.C_PROBE6_WIDTH {8} CONFIG.C_PROBE4_WIDTH {8} CONFIG.C_PROBE3_WIDTH {4} CONFIG.C_PROBE2_WIDTH {4} CONFIG.C_NUM_OF_PROBES {9}] [get_ips ila_uart]
+generate_target all [get_files  F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci]
+catch { config_ip_cache -export [get_ips -all ila_uart] }
+export_ip_user_files -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -no_script -sync -force -quiet
+reset_run ila_uart_synth_1
+launch_runs -jobs 24 ila_uart_synth_1
+export_simulation -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {uart_inst/rx/RX} {uart_inst/rx/bit_i} {uart_inst/rx/bits} {uart_inst/rx/bits_1} {uart_inst/rx/lp_error} {uart_inst/rx/os_cnt} {uart_inst/rx/rx_tick} {uart_inst/rx/rx_valid} {uart_inst/rx/state} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+add_hw_probe_enum -dict {start eq8'h00 data eq8'h01 valid eq8'h02 stop eq8'h03} [get_hw_probes uart_inst/rx/state -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+add_wave -into {hw_ila_data_1.wcfg} -radix bin { {uart_inst/rx/bits} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {uart_inst/rx/bit_i} }
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+reset_run impl_1 -prev_step 
+set_property -dict [list CONFIG.C_DATA_DEPTH {65536}] [get_ips ila_uart]
+generate_target all [get_files  F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci]
+catch { config_ip_cache -export [get_ips -all ila_uart] }
+export_ip_user_files -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -no_script -sync -force -quiet
+reset_run ila_uart_synth_1
+launch_runs -jobs 24 ila_uart_synth_1
+export_simulation -of_objects [get_files F:/uart/uart.srcs/sources_1/ip/ila_uart/ila_uart.xci] -directory F:/uart/uart.ip_user_files/sim_scripts -ip_user_files_dir F:/uart/uart.ip_user_files -ipstatic_source_dir F:/uart/uart.ip_user_files/ipstatic -lib_map_path [list {modelsim=F:/uart/uart.cache/compile_simlib/modelsim} {questa=F:/uart/uart.cache/compile_simlib/questa} {riviera=F:/uart/uart.cache/compile_simlib/riviera} {activehdl=F:/uart/uart.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {uart_inst/rx/rx_check} {uart_inst/rx/rx_data} }
+add_wave -into {hw_ila_data_1.wcfg} -radix hex { {uart_inst/rx/rx_check} }
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bR [get_hw_probes uart_inst/rx/RX -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bF [get_hw_probes uart_inst/rx/RX -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes uart_inst/rx/RX -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bR [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property ENUM.stop eq8'h04 [get_hw_probes uart_inst/rx/state -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bR [get_hw_probes uart_inst/rx/rx_valid -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes uart_inst/rx/rx_valid -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'bR [get_hw_probes uart_inst/rx/RX -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+display_hw_ila_data [upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
+set_property PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {F:/uart/uart.runs/impl_1/uart_debug.ltx} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {F:/uart/uart.runs/impl_1/uart_debug.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+set_property TRIGGER_COMPARE_VALUE eq1'bX [get_hw_probes uart_inst/rx/RX -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+set_property TRIGGER_COMPARE_VALUE eq1'b1 [get_hw_probes uart_inst/rx/lp_error -of_objects [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]]
+run_hw_ila [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+wait_on_hw_ila -timeout 0 [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+upload_hw_ila_data [get_hw_ilas -of_objects [get_hw_devices xc7z020_1] -filter {CELL_NAME=~"uart_inst/rx/ila_inst"}]
+reset_project
+save_wave_config {F:/uart/uart.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wcfg}
